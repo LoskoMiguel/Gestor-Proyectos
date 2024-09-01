@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrarse</title>
 </head>
 <body>
-    <input type="text ", placeholder="Nombre del usuario">
-    <input type="tex ", placeholder="Contraseña">
-    <button type="submit">Registarse</button>
+    <h1>Registrarse</h1>
+    <form action="{{ url_for('registrarse') }}" method="post">
+        <input type="text" name="usuario_r" placeholder="Usuario">
+        <br>
+        <input type="password" name="contraseña_r" placeholder="Contraseña">
+        <br>
+        <input type="text" name="nombre" placeholder="Nombre">
+        <br>
+        <input type="text" name="cedula" placeholder="Cédula">
+        <br>
+        <label>Empleado:</label>
+        <select name="valor"> 
+            <option value="empleado">Empleado</option>
+            <option value="gestor">Gestor</option>
+        </select>
+        <br>
+        <button type="submit">Enviar</button>
+    </form>
 </body>
 </html>
