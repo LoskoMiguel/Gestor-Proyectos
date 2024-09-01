@@ -6,6 +6,12 @@
                "nombre": "carlos",
                "usuario": "carlos",
                "contrase\u00f1a": "carlos123"
+          },
+          {
+               "cedula": "123",
+               "nombre": "Jose",
+               "usuario": "Preci",
+               "contrase\u00f1a": "preciado15"
           }
      ],
      "empleados": [

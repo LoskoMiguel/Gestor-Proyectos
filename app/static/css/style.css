@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -28,5 +29,5 @@ button{
 }
 
 button:hover{
-    background-position: 100% 0;
+    background-position:100% 0;
 }
