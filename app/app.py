@@ -1,5 +1,5 @@
 import json
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 
 filename = "datos.json"
 
@@ -37,24 +37,24 @@ def iniciar_sesion():
     if request.method == "POST":
         usuario = request.form.get("usuario")
         contraseña = request.form.get("contraseña")
+        cedula = request.form.get("cedula")
         for persona in administrador_base:
-            if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña:
-                return "entraste como administrador"
+            if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña and persona.get("cedula") == cedula:
+                return redirect(url_for("administrador", cedula=cedula))
 
         for persona in gp_base:
-            if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña:
-                return "entraste como gp"
-
+            if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña and persona.get("cedula") == cedula:
+                return "hola gp"
         for persona in empleados_base:
-            if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña:
-                return "entraste como empleado"
+            if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña and persona.get("cedula") == cedula:
+                return "hola emple"
 
     return render_template("iniciar_sesion.html")
 
 @app.route("/registrarse", methods=["GET", "POST"])
 def registrarse():
     if request.method == "POST":
-        cedula = request.form.get("cedula")
+        cedula = request.form.get("cedula_r")
         nombre = request.form.get("nombre")
         usuario = request.form.get("usuario_r")
         contraseña = request.form.get("contraseña_r")
@@ -77,6 +77,11 @@ def registrarse():
         return redirect("/iniciar_sesion")
 
     return render_template("registrarse.html")
+
+@app.route("/administrador")
+def administrador():
+    cedula = request.args.get("cedula")
+    return render_template("administrador", cedula=cedula)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
