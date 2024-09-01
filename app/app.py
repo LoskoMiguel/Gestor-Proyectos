@@ -19,9 +19,15 @@ def cargar_datos():
 
     return administrador_base, gp_base, empleados_base, proyectos_base
 
-def guardar_datos(administrador_base, gp_base, empleados_base):
+def guardar_datos(administrador_base, gp_base, empleados_base, proyectos_base):
     with open(filename, "w", encoding="utf-8") as file:
-        json.dump({"administrador": administrador_base, "gestor de proyectos": gp_base, "empleados": empleados_base}, file, indent=5)
+        json.dump({
+            "administrador": administrador_base,
+            "gestor de proyectos": gp_base,
+            "empleados": empleados_base,
+            "proyectos": proyectos_base
+        }, file, indent=5)
+
 
 
 administrador_base, gp_base, empleados_base, proyectos_base = cargar_datos()
@@ -40,14 +46,16 @@ def iniciar_sesion():
         cedula = request.form.get("cedula")
         for persona in administrador_base:
             if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña and persona.get("cedula") == cedula:
-                return redirect(url_for("administrador", cedula=cedula))
+                return redirect(url_for("administrador", cedula_A=cedula))
 
         for persona in gp_base:
             if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña and persona.get("cedula") == cedula:
-                return "hola gp"
+                return redirect(url_for("gestor", cedula_GP=cedula))
+    
         for persona in empleados_base:
             if persona.get("usuario") == usuario and persona.get("contraseña") == contraseña and persona.get("cedula") == cedula:
-                return "hola emple"
+                return redirect(url_for("empleado", cedula_E=cedula))
+
 
     return render_template("iniciar_sesion.html")
 
@@ -80,8 +88,19 @@ def registrarse():
 
 @app.route("/administrador")
 def administrador():
-    cedula = request.args.get("cedula")
-    return render_template("administrador", cedula=cedula)
+    cedula_A = request.args.get("cedula_A")
+    return render_template("administrador.html", cedula_A=cedula_A)
+
+@app.route("/empleado")
+def empleado():
+    cedula_E = request.args.get("cedula_E")
+    return render_template("empleado.html", cedula_E=cedula_E)
+
+
+@app.route("/gestor")
+def gestor():
+    cedula_GP = request.args.get("cedula_GP")
+    return render_template("gestor.html", cedula_GP=cedula_GP)
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
