@@ -11,7 +11,7 @@ body{
     align-items: center;
 }
 
-.btn_1{
+.btn{
     width: 200px;
     height: 70;
     font-size: 20;
@@ -27,6 +27,7 @@ body{
     transition: all .5s;
 }
 
-.btn_1:hover{
+.btn:hover{
     background-position: 100% 0;
 }
+
