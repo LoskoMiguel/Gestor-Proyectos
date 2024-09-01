@@ -1,0 +1,19 @@
+{
+     "administrador": [],
+     "gestor de proyectos": [
+          {
+               "cedula": null,
+               "nombre": "lucas",
+               "usuario": "lucas",
+               "contrase\u00f1a": "lucas123"
+          }
+     ],
+     "empleados": [
+          {
+               "cedula": "5435",
+               "nombre": "miguel",
+               "usuario": "miguel",
+               "contrase\u00f1a": "losko1122"
+          }
+     ]
+}
