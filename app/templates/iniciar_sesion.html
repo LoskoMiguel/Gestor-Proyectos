@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+
     <form action="{{ url_for('iniciar_sesion') }}" method="post">
+        <br>
         <input type="text" name="usuario" placeholder="Nombre de usuario">
+        <br>
         <input type="password" name="contraseña" placeholder="Contraseña">
+        <br>
         <button type="submit">Iniciar sesión</button>
+
     </form>
 </body>
 </html>
