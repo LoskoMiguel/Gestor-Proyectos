@@ -5,30 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 <body>
     <div class="wrapper">
-      <h1>iniciar sesion</h1>
-      <br>
+      <h1>Iniciar sesion</h1>
 
       <form action="{{ url_for('iniciar_sesion') }}" method="post">
-        <br>
         <div class="imput-box">
         <input type="text" name="usuario" placeholder="Nombre de usuario" required>
         <i class='bx bxs-user'></i>
         </div>
 
-        <br>
         <div class="imput-box">
         <input type="password" name="contraseña" placeholder="Contraseña" required>
         <i class='bx bxs-lock-alt'></i>
         </div>
 
-        <br>
         <div class="imput-box">
         <input type="text" name="cedula" placeholder="Cedula" required>
-        <i class='bx bx-id-card'></i>
+        </div>
+
+        <div class="remember-forgot">
+            <label><input type="checkbox"> Remember me</label>
+            <a href="#">Forgot password?</a>
         </div>
 
         <button type="submit" class="btn" >Iniciar sesión</button>
