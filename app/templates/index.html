@@ -1,23 +1,240 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Proyectos Futurista</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto+Mono:wght@300&display=swap');
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: #0d0d0d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .wrapper {
+            background-color: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 15px 50px rgba(0, 255, 150, 0.4);
+            border: 1px solid rgba(0, 255, 150, 0.3);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: perspective(800px) rotateY(0deg) rotateX(0deg);
+            transition: transform 0.6s ease;
+        }
+
+        .wrapper:hover {
+            transform: perspective(800px) rotateY(5deg) rotateX(5deg);
+        }
+
+        .wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(0,255,255,0) 0%, rgba(0,255,150,0.6) 50%, rgba(0,255,255,0) 100%);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.7;
+        }
+
+        h1.logo {
+            font-size: 32px;
+            color: #00ff9d;
+            text-shadow: 0 0 15px rgba(0, 255, 150, 0.8);
+            margin-bottom: 25px;
+            transition: text-shadow 0.5s ease;
+        }
+
+        .wrapper:hover h1.logo {
+            text-shadow: 0 0 25px rgba(0, 255, 150, 1);
+        }
+
+        .description {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 17px;
+            color: #d0f0e0;
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .input-box {
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            background-color: #0a0a0a;
+            color: #00ff9d;
+            border: 2px solid #00ff9d;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            transition: background-color 0.4s, color 0.4s, transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(0, 255, 150, 0.3), rgba(0, 255, 255, 0.1));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #00ff9d;
+            color: #0a0a0a;
+            transform: translateY(-8px);
+            box-shadow: 0 5px 15px rgba(0, 255, 150, 0.5);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .btn a {
+            color: inherit;
+            text-decoration: none;
+            z-index: 1;
+            position: relative;
+        }
+
+        .btn-secondary {
+            border-color: #ff00e0;
+            color: #ff00e0;
+        }
+
+        .btn-secondary:hover {
+            background-color: #ff00e0;
+            color: #0a0a0a;
+            box-shadow: 0 5px 15px rgba(255, 0, 224, 0.5);
+        }
+
+        footer {
+            margin-top: 25px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 14px;
+            color: #b0b0b0;
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+            background: radial-gradient(circle, rgba(0,255,255,0.2), transparent);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        /* Floating Dots Animation */
+        .floating-dots {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -3;
+            overflow: hidden;
+        }
+
+        .floating-dots::before, .floating-dots::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(0, 255, 150, 0.8);
+            animation: floating 10s infinite linear;
+            width: 10px;
+            height: 10px;
+        }
+
+        .floating-dots::before {
+            top: 20%;
+            left: 10%;
+            animation-duration: 12s;
+        }
+
+        .floating-dots::after {
+            top: 50%;
+            right: 20%;
+            animation-duration: 15s;
+        }
+
+        @keyframes floating {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="background-animation"></div>
+    <div class="floating-dots"></div>
+    
     <div class="wrapper">
-        <form action="">
-            <h1 class="logo" >Hola, Bienvenido a tu gestros de proyectos</h1>
-
-            <div class="imput-box"> 
-                <button class="btn" ><a href="/iniciar_sesion">Iniciar sesion</a></button>
-            </div>
-            
-            <div class="imput-box"> 
-                <button class="btn" ><a href="/registrarse">Registarse</a></button>
-            </div>
-    </div>
-        </form>
+        <h1 class="logo">Bienvenido a tu Gestor de Proyectos</h1>
+        
+        <p class="description">
+            Gestiona tareas, organiza tu equipo y optimiza la productividad. ¡Asigna tareas a tu equipo y controla el progreso con nuestro sistema futurista y eficiente!
+        </p>
+        
+        <div class="input-box">
+            <button class="btn"><a href="/iniciar_sesion">Iniciar sesión</a></button>
+        </div>
+        
+        <div class="input-box">
+            <button class="btn btn-secondary"><a href="/registrarse">Registrarse</a></button>
+        </div>
+        
+        <footer>
+            © 2024 TuGestor. Todos los derechos reservados.
+        </footer>
     </div>
 </body>
 </html>

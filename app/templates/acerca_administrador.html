@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
+    <title>Acerca De</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
@@ -43,32 +43,19 @@
 
         .container {
             margin-top: 80px; /* Espacio para la navbar */
-            background-color: rgba(20, 20, 20, 0.85);
-            border-radius: 15px;
             padding: 50px;
-            max-width: 600px;
-            width: 90%;
-            box-shadow: 0 10px 40px rgba(0, 255, 150, 0.3);
-            backdrop-filter: blur(10px);
+            text-align: center;
         }
 
         h1 {
             color: #00ff9d;
-            margin-bottom: 20px;
             text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
-        }
-
-        p {
-            color: #fff;
-            font-size: 1.1rem;
-            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-
     <div class="navbar">
-        <a href="/administrador">Administrador</a>
+        <a href="/administrador">administrador</a>
         <a href="/administrador_revisar">Revisar Proyectos</a>
         <a href="/administrador_cambiar">Cambiar Contraseñas</a>
         <a href="/administrador_acercade">Acerca de</a>
@@ -76,9 +63,7 @@
     </div>
 
     <div class="container">
-        <h1>Hola, {{nombre_a}}</h1>
-        <p>Bienvenido a tu Gestor de confianza. Aquí puedes gestionar proyectos, cambiar contraseñas, y más.</p>
+        <h1>Hola {{nombre_a}}, eres un administrador y tu cargo es muy importante. ¡Felicidades! Como administrador, tienes acceso a diversas opciones como cambiar contraseñas de otros y revisar proyectos de los empleados.</h1>
     </div>
-    
 </body>
 </html>

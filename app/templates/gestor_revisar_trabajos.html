@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
+    <title>Revisar Proyecto</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
@@ -50,35 +50,70 @@
             width: 90%;
             box-shadow: 0 10px 40px rgba(0, 255, 150, 0.3);
             backdrop-filter: blur(10px);
+            text-align: left;
         }
 
         h1 {
             color: #00ff9d;
             margin-bottom: 20px;
             text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
+            font-size: 1.5rem;
         }
 
-        p {
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1.2rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #00ff9d;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
             color: #fff;
-            font-size: 1.1rem;
-            margin-top: 20px;
+        }
+
+        button {
+            background-color: #00ff9d;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        button:hover {
+            background-color: #00cc7d;
         }
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <a href="/administrador">Administrador</a>
-        <a href="/administrador_revisar">Revisar Proyectos</a>
-        <a href="/administrador_cambiar">Cambiar Contraseñas</a>
-        <a href="/administrador_acercade">Acerca de</a>
+        <a href="/gestor">Gestor</a>
+        <a href="/gestor_asignar">Asignar Proyecto</a>
+        <a href="/gestor_revisar_progresos">Revisar Progresos</a>
+        <a href="/gestor_cambiar">Cambiar Contraseñas</a>
+        <a href="/gestor_acercade">Acerca de</a>
         <a href="/">Cerrar Sesión</a>
     </div>
 
     <div class="container">
-        <h1>Hola, {{nombre_a}}</h1>
-        <p>Bienvenido a tu Gestor de confianza. Aquí puedes gestionar proyectos, cambiar contraseñas, y más.</p>
+        <h1>Revisar proyectos</h1>
+        <p>Bienvenido a la opción de revisar proyectos.</p>
+    
+        <form action="{{ url_for('gestor_revisar_trabajos') }}" method="post">
+        </form>
+    
+        {% if informacion_revisar %}
+            <h1>{{ informacion_revisar }}</h1>
+        {% endif %}
     </div>
     
+
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
+    <title>Acerca de</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
@@ -46,7 +46,7 @@
             background-color: rgba(20, 20, 20, 0.85);
             border-radius: 15px;
             padding: 50px;
-            max-width: 600px;
+            max-width: 800px;
             width: 90%;
             box-shadow: 0 10px 40px rgba(0, 255, 150, 0.3);
             backdrop-filter: blur(10px);
@@ -56,28 +56,31 @@
             color: #00ff9d;
             margin-bottom: 20px;
             text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
+            font-size: 1.5rem;
         }
 
         p {
             color: #fff;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-top: 20px;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
     <div class="navbar">
-        <a href="/administrador">Administrador</a>
-        <a href="/administrador_revisar">Revisar Proyectos</a>
-        <a href="/administrador_cambiar">Cambiar Contraseñas</a>
-        <a href="/administrador_acercade">Acerca de</a>
+        <a href="/gestor">Gestor</a>
+        <a href="/gestor_asignar">Asignar Proyecto</a>
+        <a href="/gestor_revisar_progresos">Revisar Progresos</a>
+        <a href="/gestor_cambiar">Cambiar Contraseñas</a>
+        <a href="/gestor_acercade">Acerca de</a>
         <a href="/">Cerrar Sesión</a>
     </div>
 
     <div class="container">
-        <h1>Hola, {{nombre_a}}</h1>
-        <p>Bienvenido a tu Gestor de confianza. Aquí puedes gestionar proyectos, cambiar contraseñas, y más.</p>
+        <h1>Hola, {{nombre_gp}}</h1>
+        <p>Tu tienes un cargo muy importante. ¡Felicidades! Eres un gestor de proyectos. Tienes el control total de tus empleados: puedes asignarles proyectos, cambiar contraseñas y revisar los proyectos que realizan.</p>
     </div>
     
 </body>

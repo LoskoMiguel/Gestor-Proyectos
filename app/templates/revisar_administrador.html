@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
+    <title>Revisar Proyectos</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
@@ -41,12 +41,12 @@
             text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d;
         }
 
-        .container {
+        .wrapper {
             margin-top: 80px; /* Espacio para la navbar */
             background-color: rgba(20, 20, 20, 0.85);
             border-radius: 15px;
-            padding: 50px;
-            max-width: 600px;
+            padding: 30px;
+            max-width: 500px;
             width: 90%;
             box-shadow: 0 10px 40px rgba(0, 255, 150, 0.3);
             backdrop-filter: blur(10px);
@@ -58,10 +58,46 @@
             text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
         }
 
-        p {
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #00ff9d;
+            font-size: 1.2rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
             color: #fff;
-            font-size: 1.1rem;
-            margin-top: 20px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00ff9d;
+            color: #0a0a0a;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.4s, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0a0a0a;
+            color: #00ff9d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 150, 0.4);
         }
     </style>
 </head>
@@ -75,10 +111,19 @@
         <a href="/">Cerrar Sesión</a>
     </div>
 
-    <div class="container">
-        <h1>Hola, {{nombre_a}}</h1>
-        <p>Bienvenido a tu Gestor de confianza. Aquí puedes gestionar proyectos, cambiar contraseñas, y más.</p>
+
+    <div class="wrapper">
+        <h1>Bienvenido a la opción de revisar proyectos</h1>
+        <p>Por favor, digita la cédula del empleado de quien deseas revisar el proyecto.</p>
+        <form action="{{ url_for('administrador_revisar') }}" method="post">
+            <label for="cedula_revisar_administrador">Cédula:</label>
+            <input type="text" id="cedula_revisar_administrador" name="cedula_revisar_administrador" required>
+            <button type="submit">Revisar</button>
+        </form>
+        {% if informacion is not none %}
+        <h1>{{ informacion }}</h1>
+        {% endif %}    
     </div>
-    
+
 </body>
 </html>

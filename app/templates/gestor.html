@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: #0d0d0d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: rgba(20, 20, 20, 0.85);
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 255, 150, 0.5);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #00ff9d;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+
+        .navbar a:hover {
+            text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d;
+        }
+
+        .wrapper {
+            margin-top: 80px; /* Espacio para la navbar */
+            background-color: rgba(20, 20, 20, 0.85);
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 255, 150, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #00ff9d;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #00ff9d;
+            font-size: 1.2rem;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="text"]:focus, select:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            outline: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #00ff9d;
+            color: #0a0a0a;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.4s, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0a0a0a;
+            color: #00ff9d;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0, 255, 150, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/gestor">Gestor</a>
+        <a href="/gestor_asignar">Asignar Proyecto</a>
+        <a href="/gestor_revisar_progresos">Revisar Progresos</a>
+        <a href="/gestor_cambiar">Cambiar Contraseñas</a>
+        <a href="/gestor_acercade">Acerca de</a>
+        <a href="/gestor_revisar_trabajos">Revisar proyectos</a>
+        <a href="/">Cerrar Sesión</a>
+    </div>
+
+    <div class="wrapper">
+        <h1>Hola {{nombre_gp}}</h1>
+        <p>Bienvenido a la sección del gestor. Aquí podrás asignar y revisar proyectos, cambiar contraseñas y más.</p>
+    </div>
+
+</body>
+</html>

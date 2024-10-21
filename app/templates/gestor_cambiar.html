@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambiar Contraseñas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background: #0d0d0d;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .navbar {
+            width: 100%;
+            background-color: rgba(20, 20, 20, 0.85);
+            padding: 15px;
+            box-shadow: 0 4px 10px rgba(0, 255, 150, 0.5);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: #00ff9d;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2rem;
+        }
+
+        .navbar a:hover {
+            text-shadow: 0 0 5px #00ff9d, 0 0 10px #00ff9d;
+        }
+
+        .container {
+            margin-top: 80px; /* Espacio para la navbar */
+            background-color: rgba(20, 20, 20, 0.85);
+            border-radius: 15px;
+            padding: 50px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0, 255, 150, 0.3);
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        h1 {
+            color: #00ff9d;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff9d, 0 0 20px #00ff9d;
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1.2rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #00ff9d;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        button {
+            background-color: #00ff9d;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        button:hover {
+            background-color: #00cc7d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="/gestor">Gestor</a>
+        <a href="/gestor_asignar">Asignar Proyecto</a>
+        <a href="/gestor_revisar_progresos">Revisar Progresos</a>
+        <a href="/gestor_cambiar">Cambiar Contraseñas</a>
+        <a href="/gestor_acercade">Acerca de</a>
+        <a href="/">Cerrar Sesión</a>
+    </div>
+
+    <div class="container">
+        <h1>Cambiar Contraseñas</h1>
+        <p>Por favor, selecciona si deseas cambiar la contraseña a un gestor o un empleado, y luego digita la cédula y su nueva contraseña.</p>
+        <form action="{{ url_for('gestor_cambiar') }}" method="post">
+            <label for="cedula_cambiar_gestor">Cédula</label>
+            <input type="text" name="cedula_cambiar_gestor" id="cedula_cambiar_gestor" required>
+            <label for="nueva_contraseña_gestor">Nueva Contraseña</label>
+            <input type="text" name="nueva_contraseña_gestor" id="nueva_contraseña_gestor" required>
+            <button type="submit">Cambiar</button>
+        </form>
+
+        {% if actualizo %}
+        <h1>{{ actualizo }}</h1>
+        {% endif %}
+    </div>
+
+</body>
+</html>
